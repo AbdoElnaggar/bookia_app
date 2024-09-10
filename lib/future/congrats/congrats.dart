@@ -7,8 +7,8 @@ import 'package:bookia_app/core/custome_widget/social_medai.dart';
 import 'package:bookia_app/core/utlis/text_style.dart';
 import 'package:flutter/material.dart';
 
-class password_changed extends StatelessWidget {
-  const password_changed({super.key});
+class Congrats extends StatelessWidget {
+  const Congrats({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +23,14 @@ class password_changed extends StatelessWidget {
             children: [
               Image.asset('assets/image/Sticker.png'),
               Text(
-                'Password Changed',
+                'SUCCESS!',
                 style: getBodyTextStyle(
                   context,fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: 25,),
-               Text('Your password has been changed\n                 successfully.',
+               Text('Your order will be delivered soon.\nThank you for choosing our app!',
                              style: getBodyTextStyle(context,fontWeight: FontWeight.normal,fontSize: 18),),
              
               
@@ -40,7 +40,7 @@ class password_changed extends StatelessWidget {
               custom_buttom(
                 ontap: (){},
                   border: Appcolor.primary,
-                  text: 'Password Changed',
+                  text: 'Back To Home',
                   backg: Appcolor.primary,
                   textcolor: Colors.white),
               

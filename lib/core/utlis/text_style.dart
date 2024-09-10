@@ -1,15 +1,45 @@
-// ignore_for_file: unnecessary_import
-
-import 'dart:ui';
+// ignore_for_file: unused_import, depend_on_referenced_packages
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-TextStyle getBodyTextStyle(
+
+TextStyle headlinestyle(BuildContext? context,
+{double? fontSize,Color ?color, FontWeight? fontwigth,}){
+  return TextStyle(
+    fontFamily:'DMSerifDisplay',
+    fontSize: fontSize?? 30,
+    fontWeight: fontwigth?? FontWeight.normal,
+    color: color ?? Theme.of(context!).colorScheme.onSurface,
+  );
+}
+
+
+TextStyle gettitlestyle(BuildContext? context,
+{double? fontSize,Color ?color, FontWeight? fontwigth,}){
+  return TextStyle(
+    fontFamily:'DMSerifDisplay',
+    fontSize: fontSize?? 24,
+    fontWeight: fontwigth?? FontWeight.normal,
+    color: color ?? Theme.of(context!).colorScheme.onSurface,
+  );
+}
+
+TextStyle getBodyTextStyle(BuildContext? context,
     {double? fontSize, Color? color, FontWeight? fontWeight}) {
   return TextStyle(
-    fontFamily: 'Poppins',
+    fontFamily: 'DMSerifDisplay',
+    fontSize: fontSize ?? 18,
+    fontWeight: fontWeight?? FontWeight.normal,
+    color: color ?? Theme.of(context!).colorScheme.onSurface,
+  );
+}
+
+TextStyle getSmallTextStyle(
+  BuildContext? context,
+    {double? fontSize, Color? color, FontWeight? fontWeight}) {
+  return TextStyle(
+    fontFamily: 'DMSerifDisplay',
     fontSize: fontSize ?? 16,
-    fontWeight: fontWeight?? FontWeight.bold,
-    color: color??Colors.black,
+    fontWeight: fontWeight?? FontWeight.normal,
+    color: color,
   );
 }

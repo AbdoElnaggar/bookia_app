@@ -1,6 +1,6 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, unused_import, prefer_const_constructors_in_immutables
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, unused_import, prefer_const_constructors_in_immutables, file_names
 
-import 'package:bookia_app/core/color/colors.dart';
+import 'package:bookia_app/core/utlis/color/colors.dart';
 import 'package:bookia_app/core/custome_widget/button.dart';
 import 'package:bookia_app/core/custome_widget/form_filed.dart';
 import 'package:bookia_app/core/custome_widget/social_medai.dart';
@@ -32,13 +32,10 @@ class OTP_view extends StatelessWidget {
             children: [
               Text(
                 'OTP Verification',
-                style: getBodyTextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: gettitlestyle(context,fontSize: 15)
               ),
               Text('Enter the verification code we just sent on your email address.',
-              style: getBodyTextStyle(fontWeight: FontWeight.normal),
+              style: getBodyTextStyle(context,fontWeight: FontWeight.normal),
               ),
               SizedBox(
                 height: 25,
@@ -53,9 +50,9 @@ class OTP_view extends StatelessWidget {
                               
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color:Appcolor.button_background,width: 2),
+                              border: Border.all(color:Appcolor.primary,width: 2),
                               ),
-                              child:Text('6',style: getBodyTextStyle(fontSize: 25),)
+                              child:Text('6',style:getBodyTextStyle(context,fontSize: 25))
                                                        ),
                            ),
 SizedBox(width: 15,),
@@ -67,9 +64,9 @@ SizedBox(width: 15,),
                               
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color:Appcolor.button_background,width: 2),
+                              border: Border.all(color:Appcolor.primary,width: 2),
                               ),
-                              child:Text('8',style: getBodyTextStyle(fontSize: 25),)
+                              child:Text('8',style: getBodyTextStyle(context,fontSize: 25),)
                                                        ),
                            ),
                            SizedBox(width: 15,),
@@ -83,9 +80,9 @@ SizedBox(width: 15,),
                               
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color:Appcolor.button_background,width: 2),
+                              border: Border.all(color:Appcolor.primary,width: 2),
                               ),
-                              child:Text('5',style: getBodyTextStyle(fontSize: 25),)
+                              child:Text('5',style: getBodyTextStyle(context,fontSize: 25),)
                                                        ),
                            ),
 SizedBox(width: 15,),
@@ -99,9 +96,9 @@ SizedBox(width: 15,),
                               
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color:Appcolor.button_background,width: 2),
+                              border: Border.all(color:Appcolor.primary,width: 2),
                               ),
-                              child:Text('2',style: getBodyTextStyle(fontSize: 25),)
+                              child:Text('2',style: getBodyTextStyle(context,fontSize: 25),)
                                                        ),
                            ),
               ],
@@ -112,9 +109,10 @@ SizedBox(width: 15,),
               
              
               custom_buttom(
-                  border: Appcolor.button_background,
+                ontap: (){},
+                  border: Appcolor.primary,
                   text: 'Send code',
-                  backg: Appcolor.button_background,
+                  backg: Appcolor.primary,
                   textcolor: Colors.white),
               
             ],

@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, unused_import, prefer_const_constructors_in_immutables
 
-import 'package:bookia_app/core/color/colors.dart';
+import 'package:bookia_app/core/constant/assset_iocns.dart';
+import 'package:bookia_app/core/utlis/color/colors.dart';
 import 'package:bookia_app/core/custome_widget/button.dart';
 import 'package:bookia_app/core/custome_widget/form_filed.dart';
 import 'package:bookia_app/core/custome_widget/social_medai.dart';
@@ -32,13 +33,13 @@ class forget_password extends StatelessWidget {
             children: [
               Text(
                 'Forget Password',
-                style: getBodyTextStyle(
+                style: getBodyTextStyle(context,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text('Don\'t worry! It occurs. Please enter the email address linked with your account.',
-              style: getBodyTextStyle(fontWeight: FontWeight.normal),
+              style: getBodyTextStyle(context,fontWeight: FontWeight.normal),
               ),
               SizedBox(
                 height: 25,
@@ -46,7 +47,7 @@ class forget_password extends StatelessWidget {
               text_form_filed(
                 obscure: false,
                 text: 'Ente your email',
-                icon: null,
+                
               ),
               SizedBox(
                 height: 25,
@@ -54,9 +55,10 @@ class forget_password extends StatelessWidget {
               
              
               custom_buttom(
-                  border: Appcolor.button_background,
+                ontap: (){},
+                  border: Appcolor.primary,
                   text: 'Send code',
-                  backg: Appcolor.button_background,
+                  backg: Appcolor.primary,
                   textcolor: Colors.white),
               
             ],
