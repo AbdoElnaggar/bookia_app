@@ -35,55 +35,58 @@ class New_password extends StatelessWidget {
               children: [
                 Text(
                   'Create new password',
-                  style: getBodyTextStyle(context,
+                  style: getBodyTextStyle(
+                    context,
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                 Text('Your new password must be unique from those previously used',
-              style: getBodyTextStyle(context,fontWeight: FontWeight.normal),
-              ),
+                Text(
+                  'Your new password must be unique from those previously used',
+                  style:
+                      getBodyTextStyle(context, fontWeight: FontWeight.normal),
+                ),
                 SizedBox(
                   height: 25,
                 ),
                 TextFormField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Appcolor.border,
-                  suffixIcon:SvgPicture.asset(Appicons.Eye_svg),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Appcolor.border,
+                    suffixIcon: SvgPicture.asset(Appicons.Eye_svg),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
                     hintText: 'New Password',
-                    hintStyle: getBodyTextStyle(context,fontWeight: FontWeight.normal),
-                    ),
-              ),
+                    hintStyle: getBodyTextStyle(context,
+                        fontWeight: FontWeight.normal),
+                  ),
+                ),
                 SizedBox(
                   height: 25,
                 ),
                 TextFormField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Appcolor.border,
-                  suffixIcon:SvgPicture.asset(Appicons.Eye_svg),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Appcolor.border,
+                    suffixIcon: SvgPicture.asset(Appicons.Eye_svg),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
                     hintText: 'Confirm Password',
-                    hintStyle: getBodyTextStyle(context,fontWeight: FontWeight.normal),
-                    ),
-              ),
-                
+                    hintStyle: getBodyTextStyle(context,
+                        fontWeight: FontWeight.normal),
+                  ),
+                ),
                 SizedBox(
                   height: 25,
                 ),
                 custom_buttom(
-                  ontap: (){},
+                    ontap: () {},
                     border: Appcolor.primary,
                     text: 'Reset Password',
                     backg: Appcolor.primary,
                     textcolor: Colors.white),
-                
               ],
             ),
           ),

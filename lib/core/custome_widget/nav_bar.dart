@@ -17,8 +17,8 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  int selectindex=0;
-  List<Widget>pages=[
+  int selectindex = 0;
+  List<Widget> pages = [
     home_view(),
     wishlist_view(),
     cart_view(),
@@ -28,42 +28,50 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-           
-      
-      
         body: pages[selectindex],
-         bottomNavigationBar: BottomNavigationBar(
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      type:BottomNavigationBarType.fixed,
-      selectedItemColor: Appcolor.primary,
-      unselectedItemColor: Appcolor.text_color,
-      currentIndex: selectindex,
-      onTap: (value) {
-        setState(() {
-          selectindex=value;
-        });
-      },
-      items: 
-         
-         [
-      
-      BottomNavigationBarItem(icon:SvgPicture.asset(Appicons.Home_svg),
-      activeIcon:SvgPicture.asset(Appicons.Home_svg,color: Appcolor.primary,),
-      label: 'Home'),
-      BottomNavigationBarItem(icon: SvgPicture.asset(Appicons.Notfication_svg),
-        activeIcon:SvgPicture.asset(Appicons.Notfication_svg,color: Appcolor.primary,),
-      label: 'search'),
-      BottomNavigationBarItem(icon: SvgPicture.asset(Appicons.Carg_svg),
-      activeIcon:SvgPicture.asset(Appicons.Carg_svg,color: Appcolor.primary,),
-      label: 'notifications'),
-      BottomNavigationBarItem(icon: SvgPicture.asset(Appicons.Profile_svg),
-      activeIcon:SvgPicture.asset(Appicons.Profile_svg,color: Appcolor.primary,),
-      label: 'person'),
-         ]),
-        
-        ),
+        bottomNavigationBar: BottomNavigationBar(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Appcolor.primary,
+            unselectedItemColor: Appcolor.text_color,
+            currentIndex: selectindex,
+            onTap: (value) {
+              setState(() {
+                selectindex = value;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset(Appicons.Home_svg),
+                  activeIcon: SvgPicture.asset(
+                    Appicons.Home_svg,
+                    color: Appcolor.primary,
+                  ),
+                  label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset(Appicons.Notfication_svg),
+                  activeIcon: SvgPicture.asset(
+                    Appicons.Notfication_svg,
+                    color: Appcolor.primary,
+                  ),
+                  label: 'search'),
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset(Appicons.Carg_svg),
+                  activeIcon: SvgPicture.asset(
+                    Appicons.Carg_svg,
+                    color: Appcolor.primary,
+                  ),
+                  label: 'notifications'),
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset(Appicons.Profile_svg),
+                  activeIcon: SvgPicture.asset(
+                    Appicons.Profile_svg,
+                    color: Appcolor.primary,
+                  ),
+                  label: 'person'),
+            ]),
+      ),
     );
-    
   }
 }

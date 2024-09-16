@@ -16,25 +16,26 @@ class Splash_view extends StatefulWidget {
 class _Splash_viewState extends State<Splash_view> {
   @override
   void initState() {
-    super.initState(
-      
-    );
-    Future.delayed(Duration(seconds: 5),(){
-    push(context, Welcome_view());
+    super.initState();
+    Future.delayed(Duration(seconds: 5), () {
+      push(context, Welcome_view());
     });
-    
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: Center(
+      body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          
-         Image.asset(Appicons.Logo),
-          SizedBox(height: 10,),
+          Image.asset(Appicons.Logo),
+          SizedBox(
+            height: 10,
+          ),
           Text(
             'Order Your Book Now',
-            style: getBodyTextStyle(context,),
+            style: getBodyTextStyle(
+              context,
+            ),
           ),
         ]),
       ),

@@ -8,7 +8,7 @@ import 'package:bookia_app/core/utlis/text_style.dart';
 import 'package:flutter/material.dart';
 
 class OTP_view extends StatelessWidget {
- OTP_view({super.key});
+  OTP_view({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,91 +30,87 @@ class OTP_view extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text('OTP Verification',
+                  style: gettitlestyle(context, fontSize: 15)),
               Text(
-                'OTP Verification',
-                style: gettitlestyle(context,fontSize: 15)
-              ),
-              Text('Enter the verification code we just sent on your email address.',
-              style: getBodyTextStyle(context,fontWeight: FontWeight.normal),
+                'Enter the verification code we just sent on your email address.',
+                style: getBodyTextStyle(context, fontWeight: FontWeight.normal),
               ),
               SizedBox(
                 height: 25,
               ),
-             Row(
-              children: [
+              Row(
+                children: [
                   Expanded(
-                             child: Container(
-                             
-                             padding: EdgeInsets.only(top:17,left: 30 ),
-                              height: 70,
-                              
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color:Appcolor.primary,width: 2),
-                              ),
-                              child:Text('6',style:getBodyTextStyle(context,fontSize: 25))
-                                                       ),
-                           ),
-SizedBox(width: 15,),
-                            Expanded(
-                             child: Container(
-                             
-                             padding: EdgeInsets.only(top:17,left: 30 ),
-                              height: 70,
-                              
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color:Appcolor.primary,width: 2),
-                              ),
-                              child:Text('8',style: getBodyTextStyle(context,fontSize: 25),)
-                                                       ),
-                           ),
-                           SizedBox(width: 15,),
-
-
-                            Expanded(
-                             child: Container(
-                             
-                             padding: EdgeInsets.only(top:17,left: 30 ),
-                              height: 70,
-                              
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color:Appcolor.primary,width: 2),
-                              ),
-                              child:Text('5',style: getBodyTextStyle(context,fontSize: 25),)
-                                                       ),
-                           ),
-SizedBox(width: 15,),
-
-
-                           Expanded(
-                             child: Container(
-                             
-                             padding: EdgeInsets.only(top:17,left: 30 ),
-                              height: 70,
-                              
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color:Appcolor.primary,width: 2),
-                              ),
-                              child:Text('2',style: getBodyTextStyle(context,fontSize: 25),)
-                                                       ),
-                           ),
-              ],
-             ),
+                    child: Container(
+                        padding: EdgeInsets.only(top: 17, left: 30),
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Appcolor.primary, width: 2),
+                        ),
+                        child: Text('6',
+                            style: getBodyTextStyle(context, fontSize: 25))),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.only(top: 17, left: 30),
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Appcolor.primary, width: 2),
+                        ),
+                        child: Text(
+                          '8',
+                          style: getBodyTextStyle(context, fontSize: 25),
+                        )),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.only(top: 17, left: 30),
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Appcolor.primary, width: 2),
+                        ),
+                        child: Text(
+                          '5',
+                          style: getBodyTextStyle(context, fontSize: 25),
+                        )),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: Container(
+                        padding: EdgeInsets.only(top: 17, left: 30),
+                        height: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Appcolor.primary, width: 2),
+                        ),
+                        child: Text(
+                          '2',
+                          style: getBodyTextStyle(context, fontSize: 25),
+                        )),
+                  ),
+                ],
+              ),
               SizedBox(
                 height: 25,
               ),
-              
-             
               custom_buttom(
-                ontap: (){},
+                  ontap: () {},
                   border: Appcolor.primary,
                   text: 'Send code',
                   backg: Appcolor.primary,
                   textcolor: Colors.white),
-              
             ],
           ),
         ),

@@ -9,7 +9,7 @@ import 'package:bookia_app/core/utlis/text_style.dart';
 import 'package:flutter/material.dart';
 
 class forget_password extends StatelessWidget {
- forget_password({super.key});
+  forget_password({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +33,15 @@ class forget_password extends StatelessWidget {
             children: [
               Text(
                 'Forget Password',
-                style: getBodyTextStyle(context,
+                style: getBodyTextStyle(
+                  context,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text('Don\'t worry! It occurs. Please enter the email address linked with your account.',
-              style: getBodyTextStyle(context,fontWeight: FontWeight.normal),
+              Text(
+                'Don\'t worry! It occurs. Please enter the email address linked with your account.',
+                style: getBodyTextStyle(context, fontWeight: FontWeight.normal),
               ),
               SizedBox(
                 height: 25,
@@ -47,20 +49,16 @@ class forget_password extends StatelessWidget {
               text_form_filed(
                 obscure: false,
                 text: 'Ente your email',
-                
               ),
               SizedBox(
                 height: 25,
               ),
-              
-             
               custom_buttom(
-                ontap: (){},
+                  ontap: () {},
                   border: Appcolor.primary,
                   text: 'Send code',
                   backg: Appcolor.primary,
                   textcolor: Colors.white),
-              
             ],
           ),
         ),

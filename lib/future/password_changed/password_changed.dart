@@ -14,36 +14,38 @@ class password_changed extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-       
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment:MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/image/Sticker.png'),
               Text(
                 'Password Changed',
                 style: getBodyTextStyle(
-                  context,fontSize: 30,
+                  context,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 25,),
-               Text('Your password has been changed\n                 successfully.',
-                             style: getBodyTextStyle(context,fontWeight: FontWeight.normal,fontSize: 18),),
-             
-              
+              SizedBox(
+                height: 25,
+              ),
+              Text(
+                'Your password has been changed\n                 successfully.',
+                style: getBodyTextStyle(context,
+                    fontWeight: FontWeight.normal, fontSize: 18),
+              ),
               SizedBox(
                 height: 25,
               ),
               custom_buttom(
-                ontap: (){},
+                  ontap: () {},
                   border: Appcolor.primary,
                   text: 'Password Changed',
                   backg: Appcolor.primary,
                   textcolor: Colors.white),
-              
             ],
           ),
         ),

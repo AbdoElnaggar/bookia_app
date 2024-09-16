@@ -20,9 +20,9 @@ class _auth_viewState extends State<cart_view> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title:Text(
-          'My Cart',style: gettitlestyle(context),
-          
+        title: Text(
+          'My Cart',
+          style: gettitlestyle(context),
         ),
       ),
       body: Center(
@@ -100,7 +100,9 @@ class _auth_viewState extends State<cart_view> {
                 );
               },
             ),
-            Spacer(flex: 2,),
+            Spacer(
+              flex: 2,
+            ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
@@ -110,15 +112,17 @@ class _auth_viewState extends State<cart_view> {
                     children: [
                       Text(
                         'Total',
-                        style: getSmallTextStyle(context,fontSize: 20),
+                        style: getSmallTextStyle(context, fontSize: 20),
                       ),
                       Text(
                         '\$95',
-                        style: getBodyTextStyle(context,fontSize: 20),
+                        style: getBodyTextStyle(context, fontSize: 20),
                       ),
                     ],
                   ),
-                  SizedBox(height: 12,),
+                  SizedBox(
+                    height: 12,
+                  ),
                   custom_buttom(
                       border: Appcolor.primary,
                       text: 'Checkout',
@@ -128,7 +132,9 @@ class _auth_viewState extends State<cart_view> {
                 ],
               ),
             ),
-            Spacer(flex: 3,)
+            Spacer(
+              flex: 3,
+            )
           ],
         ),
       ),

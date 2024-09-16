@@ -3,8 +3,7 @@
 import 'package:bookia_app/core/constant/assset_iocns.dart';
 import 'package:flutter/material.dart';
 
-
-class Cartmodel{
+class Cartmodel {
   String? name;
   String? img;
   String? svgimg;
@@ -14,44 +13,38 @@ class Cartmodel{
   String? time;
   IconData? icon;
   IconData? icons;
-  Cartmodel({
-    this.name,
-    this.img,
-    this.price,
-    this.addsvgimg,
-    this.removesvgimg,
-    this.svgimg
-  });
+  Cartmodel(
+      {this.name,
+      this.img,
+      this.price,
+      this.addsvgimg,
+      this.removesvgimg,
+      this.svgimg});
 }
-List<Cartmodel> Cartlist=[
-Cartmodel(
-  name: 'The Republic',
-  img: 'assets/image/image 5.png',
-  price: '\$280.00',
-  svgimg:'assets/icons/Shape.svg',
-  addsvgimg: Appicons.Add_svg,
-  removesvgimg: Appicons.Remove_svg,
-  
-) ,
 
-Cartmodel(
-  name: 'The Republic',
-  img: 'assets/image/image 5.png',
-  price: '\$280.00',
-  svgimg:'assets/icons/Shape.svg',
-  addsvgimg: Appicons.Add_svg,
-  removesvgimg: Appicons.Remove_svg,
-) ,
-
-
-
-Cartmodel(
-  name: 'The Republic',
-  img: 'assets/image/image 5.png',
-  price: '\$280.00',
-  svgimg:'assets/icons/Shape.svg',
-  addsvgimg: Appicons.Add_svg,
-  removesvgimg: Appicons.Remove_svg,
-) ,
-
+List<Cartmodel> Cartlist = [
+  Cartmodel(
+    name: 'The Republic',
+    img: 'assets/image/image 5.png',
+    price: '\$280.00',
+    svgimg: 'assets/icons/Shape.svg',
+    addsvgimg: Appicons.Add_svg,
+    removesvgimg: Appicons.Remove_svg,
+  ),
+  Cartmodel(
+    name: 'The Republic',
+    img: 'assets/image/image 5.png',
+    price: '\$280.00',
+    svgimg: 'assets/icons/Shape.svg',
+    addsvgimg: Appicons.Add_svg,
+    removesvgimg: Appicons.Remove_svg,
+  ),
+  Cartmodel(
+    name: 'The Republic',
+    img: 'assets/image/image 5.png',
+    price: '\$280.00',
+    svgimg: 'assets/icons/Shape.svg',
+    addsvgimg: Appicons.Add_svg,
+    removesvgimg: Appicons.Remove_svg,
+  ),
 ];
