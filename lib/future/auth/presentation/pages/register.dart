@@ -71,7 +71,6 @@ class register_view extends StatelessWidget {
                ),
              ),
              body: Padding(
-
                padding: const EdgeInsets.all(20),
                child: Form(
                  key: formkey,
@@ -206,7 +205,7 @@ class register_view extends StatelessWidget {
                        SizedBox(
                          height: 15,
                        ),
-                    //   state is RegisterLoadingState ?const CircularProgressIndicator():
+                       state is RegisterLoadingState ?const CircularProgressIndicator():
                        custom_buttom(
                            ontap: () {
                               if (formkey.currentState!.validate()){

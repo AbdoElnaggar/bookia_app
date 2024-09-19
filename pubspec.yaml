@@ -9,11 +9,13 @@ environment:
 dependencies:
   carousel_slider: ^5.0.0
   cupertino_icons: ^1.0.8
+  dio: ^5.7.0
   empty_widget: ^0.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
   flutter_svg: ^2.0.10+1
+  lottie: ^3.1.2
   smooth_page_indicator: ^1.2.0+3
 
 

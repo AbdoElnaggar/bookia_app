@@ -11,6 +11,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AuthBlok extends Bloc<AuthEvent, AuthState> {
   AuthBlok() : super(IntialState()) {
     on<AuthRegstergEvent>(register);
+
+    on<LoginEvent>(login);
   }
 
   Future<void> register(
@@ -35,23 +37,26 @@ try{
 
 
 
-  Future<void> login(
-      AuthRegstergEvent event, Emitter<AuthState> emit) async {
-    emit(RegisterLoadingState());
+  Future<void> login(LoginEvent event, Emitter<AuthState> emit) async {
+    emit(LoginLoadingState());
 try{
-    await Auth_repo.register(event.prams).then((value) {
-     
+    await Auth_repo.Login(email:event.email, password: event.password,).then((value) {
+     log(value.toString());
       if (value != null) {
-        emit(RegisterSuccesState());
+        log("email is ${event.email} and password is ${event.password} ");
+        emit(LoginSuccesState());
       } else {
-        emit(RegisterErrorState(error: "SomeThing Occerd"));
+        
+        
+       // log("--------------------------email is ${event.email} and password is ${event.password} ");
+        emit(LoginErrorState(error: "SomeThing Occerd"));
       }
-      
+
     });
       }
     on Exception catch (e) {
       log(e.toString());
-      emit(RegisterErrorState(error: "Something went wrong"));
+      emit(LoginErrorState(error: "Something went wrong"));
     }     
   }
 }
