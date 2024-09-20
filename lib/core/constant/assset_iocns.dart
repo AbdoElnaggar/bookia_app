@@ -16,4 +16,5 @@ class Appicons {
   static const String Search_svg = 'assets/icons/search.svg';
   static const String Add_svg = 'assets/icons/add.svg';
   static const String Remove_svg = 'assets/icons/remove.svg';
+  static const String banner = 'assets/image/bannaer.png';
 }

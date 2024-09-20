@@ -1,12 +1,15 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, camel_case_types, prefer_const_literals_to_create_immutables, unused_import, prefer_const_constructors_in_immutables
 
 import 'package:bookia_app/core/constant/assset_iocns.dart';
+import 'package:bookia_app/core/function/navigator.dart';
 import 'package:bookia_app/core/utlis/color/colors.dart';
 import 'package:bookia_app/core/custome_widget/button.dart';
 import 'package:bookia_app/core/custome_widget/form_filed.dart';
 import 'package:bookia_app/core/custome_widget/social_medai.dart';
 import 'package:bookia_app/core/utlis/text_style.dart';
+import 'package:bookia_app/future/welcome/welcome.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class forget_password extends StatelessWidget {
   forget_password({super.key});
@@ -23,7 +26,10 @@ class forget_password extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: IconButton(
-                onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new)),
+                onPressed: () {
+                  push(context, Welcome_view());
+                },
+                icon: SvgPicture.asset(Appicons.Back_svg)),
           ),
         ),
         body: Padding(

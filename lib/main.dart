@@ -1,6 +1,8 @@
 // ignore_for_file: unused_import, prefer_const_constructors, override_on_non_overriding_member
 
 import 'package:bookia_app/core/custome_widget/nav_bar.dart';
+import 'package:bookia_app/core/services/dio_provider.dart';
+import 'package:bookia_app/core/services/local_storage.dart';
 import 'package:bookia_app/future/OTP/Otp_view.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authBlok.dart';
 import 'package:bookia_app/future/cart/presentation/pages/cart_view.dart';
@@ -19,7 +21,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'future/register/check_out.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DioProvider.init();
+  await ApplocalStorage.init();
   runApp(const MainApp());
 }
 
@@ -30,9 +35,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AuthBlok(),
-        child: MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Welcome_view(),
+        home: home_view(),
       ),
     );
   }

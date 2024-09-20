@@ -1,5 +1,3 @@
-
-
 import 'package:bookia_app/core/utlis/color/colors.dart';
 import 'package:flutter/material.dart';
 // import 'package:lottie/lottie.dart';
@@ -16,15 +14,14 @@ showLoadingDialog(BuildContext context) {
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        return
-         SnackBar(
-  content: const Text('Yay! A SnackBar!'),
-  action: SnackBarAction(
-    label: 'Undo',
-    onPressed: () {
-      // Some code to undo the change.
-    },
-  ),
-);
+        return SnackBar(
+          content: const Text('Yay! A SnackBar!'),
+          action: SnackBarAction(
+            label: 'Undo',
+            onPressed: () {
+              // Some code to undo the change.
+            },
+          ),
+        );
       });
 }

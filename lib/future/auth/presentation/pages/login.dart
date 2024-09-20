@@ -15,6 +15,7 @@ import 'package:bookia_app/future/auth/presentation/blok/authBlok.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authEvent.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authState.dart';
 import 'package:bookia_app/future/home/presentation/pages/home_view.dart';
+import 'package:bookia_app/future/welcome/welcome.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bookia_app/future/forget_passwored/forget_password.dart';
@@ -32,22 +33,22 @@ class login_view extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBlok, AuthState>(
-          listener: (context, state) {
-            if (state is LoginSuccesState) {
-              Navigator.pop(context);
-              pushrelacement(context, home_view());
-            } else if (state is LoginErrorState) {
-              Navigator.pop(context);
-              showErrorDialog(context, state.error);
-            } else if (state is LoginLoadingState) {
-              showDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (context) {
-                    return Lottie.asset('assets/image/loding.json');
-                  });
-            }
-          },
+      listener: (context, state) {
+        if (state is LoginSuccesState) {
+          Navigator.pop(context);
+          pushrelacement(context, home_view());
+        } else if (state is LoginErrorState) {
+          Navigator.pop(context);
+          showErrorDialog(context, state.error);
+        } else if (state is LoginLoadingState) {
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return Lottie.asset('assets/image/loding.json');
+              });
+        }
+      },
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
@@ -60,182 +61,184 @@ class login_view extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(width: 1),
               ),
-              child: SvgPicture.asset(Appicons.Back_svg),
+              child: InkWell(
+                  onTap: () {
+                    push(context, Welcome_view());
+                  },
+                  child: SvgPicture.asset(Appicons.Back_svg)),
             ),
           ),
-          body:  Padding(
-              padding: const EdgeInsets.all(20),
-              child: SingleChildScrollView(
-                child: Form(
-                  key: formkey,
-                  child: Column(
-                    children: [
-                      Text(
-                        'Welcome back! Gladto see \nyou, Again!',
-                        style: getBodyTextStyle(
-                          context,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
+          body: Padding(
+            padding: const EdgeInsets.all(20),
+            child: SingleChildScrollView(
+              child: Form(
+                key: formkey,
+                child: Column(
+                  children: [
+                    Text(
+                      'Welcome back! Gladto see \nyou, Again!',
+                      style: getBodyTextStyle(
+                        context,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(
-                        height: 15,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      controller: emailControl,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Enter Your email";
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Appcolor.border,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        hintText: "Enter Your email",
+                        hintStyle: getBodyTextStyle(context,
+                            fontWeight: FontWeight.normal),
                       ),
-                      TextFormField(
-                        controller: emailControl,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Enter Your email";
-                          }
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      controller: passwordControl,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Enter Your Password";
+                        } else if (value.length < 8) {
+                          return "password must  be 8 character";
+                        } else {
                           return null;
-                        },
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Appcolor.border,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          hintText: "Enter Your email",
-                          hintStyle: getBodyTextStyle(context,
-                              fontWeight: FontWeight.normal),
+                        }
+                      },
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Appcolor.border,
+                        suffixIconConstraints: BoxConstraints(maxWidth: 33),
+                        suffixIcon: Row(
+                          children: [
+                            SvgPicture.asset(
+                              Appicons.Eye_svg,
+                            )
+                          ],
                         ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        hintText: "Enter Your Password",
+                        hintStyle: getBodyTextStyle(context,
+                            fontWeight: FontWeight.normal),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        controller: passwordControl,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Enter Your Password";
-                          }
-                          else if(value.length<8){
-                               return "password must  be 8 character";
-                          }
-                           else {
-                            return null;
-                          }
-                        },
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Appcolor.border,
-                          suffixIconConstraints: BoxConstraints(maxWidth: 33),
-                          suffixIcon: Row(
-                            children: [
-                              SvgPicture.asset(
-                                Appicons.Eye_svg,
-                              )
-                            ],
-                          ),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          hintText: "Enter Your Password",
-                          hintStyle: getBodyTextStyle(context,
-                              fontWeight: FontWeight.normal),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                          margin: EdgeInsets.only(left: 200),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => forget_password()));
-                            },
-                            child: Text(
-                              'Forget Password ?',
-                              style: getBodyTextStyle(
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(left: 200),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
                                 context,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          )),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      custom_buttom(
-                          ontap: () {
-                            if (formkey.currentState!.validate()) {
-                              context.read<AuthBlok>().add(LoginEvent(
-                                    email: emailControl.text,
-                                    password: passwordControl.text,
-                                  ));
-                            }
+                                MaterialPageRoute(
+                                    builder: (context) => forget_password()));
                           },
-                          border: Appcolor.primary,
-                          text: 'Login',
-                          backg: Appcolor.primary,
-                          textcolor: Colors.white),
-                      SizedBox(
-                        height: 35,
-                      ),
-                      Row(children: [
-                        Expanded(
-                            child: Divider(
-                          thickness: 2,
-                        )),
-                        Text("  Or Login With  ",
+                          child: Text(
+                            'Forget Password ?',
                             style: getBodyTextStyle(
                               context,
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
-                            )),
-                        Expanded(
-                            child: Divider(
-                          thickness: 2,
+                            ),
+                          ),
                         )),
-                      ]),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          social_media(path: 'assets/image/facebook_ic.png'),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          social_media(path: 'assets/image/google_ic.png'),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          social_media(path: 'assets/image/cib_apple.png')
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Don’t have an account?',
-                            style: getBodyTextStyle(context, fontSize: 15),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => register_view()));
-                            },
-                            child: Text(' Register Now',
-                                style: getBodyTextStyle(context,
-                                    color: Appcolor.primary, fontSize: 15)),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    custom_buttom(
+                        ontap: () {
+                          if (formkey.currentState!.validate()) {
+                            context.read<AuthBlok>().add(LoginEvent(
+                                  email: emailControl.text,
+                                  password: passwordControl.text,
+                                ));
+                          }
+                        },
+                        border: Appcolor.primary,
+                        text: 'Login',
+                        backg: Appcolor.primary,
+                        textcolor: Colors.white),
+                    SizedBox(
+                      height: 35,
+                    ),
+                    Row(children: [
+                      Expanded(
+                          child: Divider(
+                        thickness: 2,
+                      )),
+                      Text("  Or Login With  ",
+                          style: getBodyTextStyle(
+                            context,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          )),
+                      Expanded(
+                          child: Divider(
+                        thickness: 2,
+                      )),
+                    ]),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        social_media(path: 'assets/image/facebook_ic.png'),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        social_media(path: 'assets/image/google_ic.png'),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        social_media(path: 'assets/image/cib_apple.png')
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Don’t have an account?',
+                          style: getBodyTextStyle(context, fontSize: 15),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => register_view()));
+                          },
+                          child: Text(' Register Now',
+                              style: getBodyTextStyle(context,
+                                  color: Appcolor.primary, fontSize: 15)),
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
             ),
           ),
         ),
+      ),
     );
   }
 }
