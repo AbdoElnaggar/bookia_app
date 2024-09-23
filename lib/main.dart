@@ -9,13 +9,16 @@ import 'package:bookia_app/future/cart/presentation/pages/cart_view.dart';
 import 'package:bookia_app/future/congrats/congrats.dart';
 import 'package:bookia_app/future/creat_new_password/new_password.dart';
 import 'package:bookia_app/future/forget_passwored/forget_password.dart';
-import 'package:bookia_app/future/home/presentation/pages/home_view.dart';
+import 'package:bookia_app/future/home/presentation/bloc/home_bloc.dart';
+import 'package:bookia_app/future/home/presentation/pages/home/home_view.dart';
 import 'package:bookia_app/future/intro/splash_view.dart';
 import 'package:bookia_app/future/auth/presentation/pages/login.dart';
 import 'package:bookia_app/future/password_changed/password_changed.dart';
 import 'package:bookia_app/future/auth/presentation/pages/register.dart';
+import 'package:bookia_app/future/profile/presentation/block/bloc/profile_bloc.dart';
+import 'package:bookia_app/future/profile/presentation/pages/profile_view.dart';
 import 'package:bookia_app/future/welcome/welcome.dart';
-import 'package:bookia_app/future/wishlist.dart/presentation/pages/wishlist_view.dart';
+import 'package:bookia_app/future/home/presentation/pages/wishlist/wishlist_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,11 +36,21 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBlok(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthBlok(),
+        ),
+        BlocProvider(
+          create: (context) => HomeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ProfileBloc(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: home_view(),
+        home: SplashView(),
       ),
     );
   }

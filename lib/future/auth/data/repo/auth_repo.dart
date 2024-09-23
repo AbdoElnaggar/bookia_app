@@ -2,15 +2,24 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:bookia_app/core/constant/constant.dart';
+import 'package:bookia_app/core/services/dio_provider.dart';
+import 'package:bookia_app/core/services/local_storage.dart';
 import 'package:bookia_app/future/auth/data/models/request/registerPrams.dart';
 import 'package:bookia_app/future/auth/data/models/response/register_respons_model/register_respons_model.dart';
 import 'package:dio/dio.dart';
 
 class Auth_repo {
   static Future<RegisterResponsModel?> register(RedisterPrams prams) async {
+    //register
     try {
       String url = App_constant.url + App_constant.register;
-      var response = await Dio().post(url, data: prams.toJson());
+      var response = await DioProvider.post(
+          endpoint: App_constant.register,
+          data: prams.toJson(),
+          headers: {
+            "Authorization":
+                "Bearer${ApplocalStorage.getData(key: ApplocalStorage.token)}"
+          });
 
       if (response.statusCode == 201) {
         var model = RegisterResponsModel.fromJson(response.data);
@@ -27,8 +36,16 @@ class Auth_repo {
   static Future<RegisterResponsModel?> Login(
       {required String email, required String password}) async {
     String url = App_constant.url + App_constant.loginEndpoints;
-    var response =
-        await Dio().post(url, data: {"email": email, "password": password});
+    var response = await DioProvider.post(
+        endpoint: App_constant.loginEndpoints,
+        data: {
+          "email": email,
+          "password": password
+        },
+        headers: {
+          "Authorization":
+              "Bearer${ApplocalStorage.getData(key: ApplocalStorage.token)}"
+        });
     if (response.statusCode == 200) {
       var model = RegisterResponsModel.fromJson(response.data);
       return model;

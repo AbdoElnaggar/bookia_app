@@ -12,7 +12,7 @@ import 'package:bookia_app/core/custome_widget/social_medai.dart';
 import 'package:bookia_app/core/utlis/text_style.dart';
 import 'package:bookia_app/future/auth/data/models/request/registerPrams.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authBlok.dart';
-import 'package:bookia_app/future/home/presentation/pages/home_view.dart';
+import 'package:bookia_app/future/home/presentation/pages/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';

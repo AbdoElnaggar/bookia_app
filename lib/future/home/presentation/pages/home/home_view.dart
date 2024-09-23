@@ -24,7 +24,7 @@ class _home_viewState extends State<home_view> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeBloc()..add(GetBestSallerEvent()),
+      create: (context) => HomeBloc()..add(GetBestSallerEvent())..add(GetHomeBannerEvent()),
       child: Scaffold(
           appBar: AppBar(
             // backgroundColor: Appcolor.white,
@@ -50,7 +50,7 @@ class _home_viewState extends State<home_view> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HomeBanner(),
+                  HomeBannerWidget(),
                   SizedBox(
                     height: 16,
                   ),

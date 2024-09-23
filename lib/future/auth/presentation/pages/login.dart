@@ -14,7 +14,7 @@ import 'package:bookia_app/future/auth/data/models/request/registerPrams.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authBlok.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authEvent.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authState.dart';
-import 'package:bookia_app/future/home/presentation/pages/home_view.dart';
+import 'package:bookia_app/future/home/presentation/pages/home/home_view.dart';
 import 'package:bookia_app/future/welcome/welcome.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,7 +36,7 @@ class login_view extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccesState) {
           Navigator.pop(context);
-          pushrelacement(context, home_view());
+          pushrelacement(context, NavBar());
         } else if (state is LoginErrorState) {
           Navigator.pop(context);
           showErrorDialog(context, state.error);

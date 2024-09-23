@@ -8,9 +8,6 @@ class ApplocalStorage {
   }
 
   static Cachdata({required String key, required dynamic value}) async {
-    if (value is String) {
-      await _sharedPreferences.setString(key, value);
-    }
     if (value is int) {
       await _sharedPreferences.setInt(key, value);
     }

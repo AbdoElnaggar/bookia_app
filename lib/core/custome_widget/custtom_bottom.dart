@@ -1,4 +1,3 @@
-
 import 'package:bookia_app/core/utlis/color/colors.dart';
 import 'package:bookia_app/core/utlis/text_style.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +10,7 @@ class CustomButton extends StatelessWidget {
       required this.text,
       required this.onTap,
       this.textStyle,
-      this.color ,
+      required this.color,
       this.radius = 8,
       this.isOutline = false});
   final double width;
@@ -19,7 +18,7 @@ class CustomButton extends StatelessWidget {
   final String text;
   final Function() onTap;
   final TextStyle? textStyle;
-  final Color? color;
+  final Color color;
   final double radius;
   final bool isOutline;
 
@@ -43,8 +42,7 @@ class CustomButton extends StatelessWidget {
             text,
             style: textStyle ??
                 getBodyTextStyle(context,
-                    color:
-                        isOutline ? Appcolor.text_color : Appcolor.white),
+                    color: isOutline ? Appcolor.text_color : Appcolor.white),
           )),
     );
   }

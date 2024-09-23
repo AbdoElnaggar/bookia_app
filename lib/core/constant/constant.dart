@@ -5,4 +5,7 @@ class App_constant {
   static const String register = '/register';
   static const String loginEndpoints = '/login';
   static const String BestSellerEndpoints = '/products-bestseller';
+  static const String Bannerndpoints = '/sliders';
+  static const String Profilepoints = '/profile';
+  static const String WishlistEndpoint = '/wishlist';
 }
