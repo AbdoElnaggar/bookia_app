@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use, unused_import
 
 import 'package:bookia_app/core/constant/assset_iocns.dart';
 import 'package:bookia_app/core/utlis/color/colors.dart';
-import 'package:bookia_app/future/cart/presentation/pages/cart_view.dart';
+import 'package:bookia_app/future/home/presentation/pages/cart/cart_view.dart';
 import 'package:bookia_app/future/home/presentation/pages/home/home_view.dart';
 import 'package:bookia_app/future/profile/presentation/pages/profile_view.dart';
 import 'package:bookia_app/future/home/presentation/pages/wishlist/wishlist_view.dart';

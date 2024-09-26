@@ -5,7 +5,7 @@ import 'package:bookia_app/core/services/dio_provider.dart';
 import 'package:bookia_app/core/services/local_storage.dart';
 import 'package:bookia_app/future/OTP/Otp_view.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authBlok.dart';
-import 'package:bookia_app/future/cart/presentation/pages/cart_view.dart';
+import 'package:bookia_app/future/home/presentation/pages/cart/cart_view.dart';
 import 'package:bookia_app/future/congrats/congrats.dart';
 import 'package:bookia_app/future/creat_new_password/new_password.dart';
 import 'package:bookia_app/future/forget_passwored/forget_password.dart';

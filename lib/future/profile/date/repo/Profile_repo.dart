@@ -9,14 +9,13 @@ import 'package:bookia_app/future/profile/date/model/response/profile_response_m
 class ProfileRepo {
   static Future<ProfileResponseModel?> getProfileEvent() async {
     //try {
-    var response = await DioProvider.get(
-        endpoint: App_constant.Profilepoints,
-        headers: {
-          "Authorization":"Bearer ${ApplocalStorage.getData(key: ApplocalStorage.token,)}"
-        }
-        );
+    var response =
+        await DioProvider.get(endpoint: App_constant.Profilepoints, headers: {
+      "Authorization": "Bearer ${ApplocalStorage.getData(
+        key: ApplocalStorage.token,
+      )}"
+    }, data: {});
     if (response.statusCode == 200) {
-      
       log(response.data.toString());
       var model = ProfileResponseModel.fromJson(response.data);
       return model;

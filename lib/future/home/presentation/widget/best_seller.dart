@@ -20,7 +20,8 @@ class best_seller_widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       buildWhen: (previous, current) =>
-          current is BestSellerHomeLoadedState ||current is BestSellerHomeLoadingState,
+          current is BestSellerHomeLoadedState ||
+          current is BestSellerHomeLoadingState,
       builder: (context, state) {
         if (state is BestSellerHomeLoadedState) {
           var books = context.read<HomeBloc>().bestSellerResponseModel?.data;
