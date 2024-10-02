@@ -123,7 +123,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       await HomeRepo.removeWishlist(product_id: event.product_id).then((value) {
         if (value != null) {
-          
           emit(RemoveWishlistLoadedState());
         } else {
           emit(WishlistErrorState());
@@ -137,12 +136,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   //cart
 
-  Future<void> getCart(
-      GetCartEvent event, Emitter<HomeState> emit) async {
+  Future<void> getCart(GetCartEvent event, Emitter<HomeState> emit) async {
     emit(CartLoadingState());
 
     try {
-      await HomeRepo.getCart(item_id:'').then((value) {
+      await HomeRepo.getCart().then((value) {
         if (value != null) {
           getCartResponseModel == value;
           emit(CartLoadedState());
@@ -161,7 +159,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(Add_to_CartLoadingState());
 
     try {
-      await HomeRepo.AddToCart(product_id:event.product_id).then((value) {
+      await HomeRepo.AddToCart(product_id: event.product_id).then((value) {
         if (value != null) {
           emit(Add_to_CartLoadedState());
         } else {

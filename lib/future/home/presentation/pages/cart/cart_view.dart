@@ -41,154 +41,165 @@ class _cart_viewState extends State<cart_view> {
           ),
         ),
         body: BlocConsumer<HomeBloc, HomeState>(
-          listener: (context, state) {
-            if (state is RemoveCartLoadedState) {
-              Navigator.pop(context);
-              context.read<HomeBloc>().add(GetCartEvent());
-            } else if (state is RemoveCartLoadingState|| state is CartLoadingState) {
-              showDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (context) {
-                    return Lottie.asset('assets/image/loding.json');
-                  });
-            }
-            else if (state  is CartLoadedState) {
-              Navigator.pop(context);
-            }
-          },
-          buildWhen: (previous, current) => current is CartLoadedState,
-          builder: (context, state) {
-            var cartlist =
-                context.read<HomeBloc>().getCartResponseModel?.data?.cartItems;
-            if (cartlist?.isEmpty ?? false) {
-              return Center(
-                child: Text(
-                  "No Books Add To Cart",
-                  style: getBodyTextStyle(context),
-                ),
-              );
-            } else {
-                       return Center(
-          child: Column(
-            children: [
-              ListView.separated(
-                shrinkWrap: true,
-                itemCount: cartlist?.length ??0,
-                itemBuilder: (BuildContext context, int index) {
-                  Row(
-                    children: [Icon(Icons.clean_hands)],
-                  );
-                  return ListTile(
-                    leading: CachedNetworkImage(
-                      imageUrl: cartlist?[index].itemProductImage??'',
-                      fit: BoxFit.cover,
-                      width: 100,
-                      height: 160,
-                    ),
-                    title: Text(
-                      cartlist?[index].itemProductName??'',
-                      maxLines: 1,
-                      style: getSmallTextStyle(context),
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          cartlist?[index].itemProductPrice??'',
-                          style: getSmallTextStyle(context),
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                color: Appcolor.scendary,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: SvgPicture.asset(
-                                  Appicons.Add_svg),
+            listener: (context, state) {
+              if (state is RemoveCartLoadedState) {
+                Navigator.pop(context);
+                context.read<HomeBloc>().add(GetCartEvent());
+              } else if (state is RemoveCartLoadingState ||
+                  state is CartLoadingState) {
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) {
+                      return Lottie.asset('assets/image/loding.json');
+                    });
+              } else if (state is CartLoadedState) {
+                Navigator.pop(context);
+              }
+            },
+            buildWhen: (previous, current) => current is CartLoadedState,
+            builder: (context, state) {
+              var cartlist = context
+                  .read<HomeBloc>()
+                  .getCartResponseModel
+                  ?.data
+                  ?.cartItems;
+              if (cartlist?.isEmpty ?? false) {
+                return Center(
+                  child: Text(
+                    "No Books Add To Cart",
+                    style: getBodyTextStyle(context),
+                  ),
+                );
+              } else {
+                return Center(
+                  child: Column(
+                    children: [
+                      ListView.separated(
+                        shrinkWrap: true,
+                        itemCount: cartlist?.length ?? 0,
+                        itemBuilder: (BuildContext context, int index) {
+                          Row(
+                            children: [Icon(Icons.clean_hands)],
+                          );
+                          return ListTile(
+                            leading: CachedNetworkImage(
+                              imageUrl: cartlist?[index].itemProductImage ?? '',
+                              fit: BoxFit.cover,
+                              width: 100,
+                              height: 160,
                             ),
-                            Text(
-                              cartlist?[index].itemQuantity.toString()??'',
+                            title: Text(
+                              cartlist?[index].itemProductName ?? '',
+                              maxLines: 1,
                               style: getSmallTextStyle(context),
                             ),
-                            Container(
-                              padding: EdgeInsets.all(15),
-                              margin: EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                color: Appcolor.scendary,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: InkWell(
-                                onTap: (){
-                                  context.read<HomeBloc>().add(RemoveCartEvent(product_id: cartlist?[index].itemProductId));
-                                },
-                                child: SvgPicture.asset(
-                                   Appicons.Remove_svg),
-                              ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  cartlist?[index].itemProductPrice ?? '',
+                                  style: getSmallTextStyle(context),
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      margin: EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                        color: Appcolor.scendary,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: SvgPicture.asset(Appicons.Add_svg),
+                                    ),
+                                    Text(
+                                      cartlist?[index]
+                                              .itemQuantity
+                                              .toString() ??
+                                          '',
+                                      style: getSmallTextStyle(context),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.all(15),
+                                      margin: EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                        color: Appcolor.scendary,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          context.read<HomeBloc>().add(
+                                              RemoveCartEvent(
+                                                  product_id: cartlist?[index]
+                                                      .itemProductId));
+                                        },
+                                        child: SvgPicture.asset(
+                                            Appicons.Remove_svg),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
+                            trailing: Expanded(
+                              child: SvgPicture.asset(
+                                  cartlist?[index].itemProductImage ?? ''),
+                            ),
+                          );
+                          SizedBox(
+                            height: 10,
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return Divider(
+                            thickness: 2,
+                            indent: 10,
+                            endIndent: 3,
+                            color: Colors.grey,
+                          );
+                        },
+                      ),
+                      Spacer(
+                        flex: 2,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Total',
+                                  style:
+                                      getSmallTextStyle(context, fontSize: 20),
+                                ),
+                                Text(
+                                  '\$65',
+                                  style:
+                                      getBodyTextStyle(context, fontSize: 20),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            custom_buttom(
+                                border: Appcolor.primary,
+                                text: 'Checkout',
+                                backg: Appcolor.primary,
+                                textcolor: Appcolor.white,
+                                ontap: () {})
                           ],
-                        )
-                      ],
-                    ),
-                    trailing: Expanded(
-                      child: SvgPicture.asset(cartlist?[index].itemProductImage ?? ''),
-                    ),
-                  );
-                  SizedBox(
-                    height: 10,
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return Divider(
-                    thickness: 2,
-                    indent: 10,
-                    endIndent: 3,
-                    color: Colors.grey,
-                  );
-                },
-              ),
-              Spacer(
-                flex: 2,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Total',
-                          style: getSmallTextStyle(context, fontSize: 20),
                         ),
-                        Text(
-                         '\$65',
-                          style: getBodyTextStyle(context, fontSize: 20),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    custom_buttom(
-                        border: Appcolor.primary,
-                        text: 'Checkout',
-                        backg: Appcolor.primary,
-                        textcolor: Appcolor.white,
-                        ontap: () {})
-                  ],
-                ),
-              ),
-              Spacer(
-                flex: 3,
-              )
-            ],
-          ),
-        );
-        }
+                      ),
+                      Spacer(
+                        flex: 3,
+                      )
+                    ],
+                  ),
+                );
+              }
               // return Padding(
               //   padding: const EdgeInsets.all(20),
               //   child: ListView.separated(
@@ -274,43 +285,9 @@ class _cart_viewState extends State<cart_view> {
               //     },
               //   ),
               // );
-            }
-          ));}
-       
-      
+            }));
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 // ignore_for_file: camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, dead_code, unused_label, annotate_overrides, unused_local_variable
 
@@ -328,7 +305,7 @@ class _cart_viewState extends State<cart_view> {
 // class cart_view extends StatefulWidget {
 //   const cart_view({super.key});
 //   @override
-  
+
 //   State<cart_view> createState() => _auth_viewState();
 // }
 // class _auth_viewState extends State<cart_view> {
@@ -359,148 +336,146 @@ class _cart_viewState extends State<cart_view> {
 //                     return Lottie.asset('assets/image/loding.json');
 //                   });
 //             }
-            
+
 //           },
 //           buildWhen: (previous, current) => current is  CartLoadedState ,
 //         builder: (context, state){
 //           var cart=context.read<HomeBloc>().getCartResponseModel?.data?.cartItems;
 //         if (cart?.isEmpty ?? false) {
-            //   return Center(
-            //     child: Text(
-            //       "No Books Add To Cart",
-            //       style: getBodyTextStyle(context),
-            //     ),
-            //   );
-            // }
+//   return Center(
+//     child: Text(
+//       "No Books Add To Cart",
+//       style: getBodyTextStyle(context),
+//     ),
+//   );
+// }
 
-        //  return Center(
-        //   child: Column(
-        //     children: [
-        //       ListView.separated(
-        //         shrinkWrap: true,
-        //         itemCount: cart?.length ??0,
-        //         itemBuilder: (BuildContext context, int index) {
-        //           Row(
-        //             children: [Icon(Icons.clean_hands)],
-        //           );
-        //           return ListTile(
-        //             leading: CachedNetworkImage(
-        //               imageUrl: cart?[index].itemProductImage??'',
-        //               fit: BoxFit.cover,
-        //               width: 100,
-        //               height: 160,
-        //             ),
-        //             title: Text(
-        //               cart?[index].itemProductName??'',
-        //               maxLines: 1,
-        //               style: getSmallTextStyle(context),
-        //             ),
-        //             subtitle: Column(
-        //               crossAxisAlignment: CrossAxisAlignment.start,
-        //               children: [
-        //                 Text(
-        //                   cart?[index].itemProductPrice??'',
-        //                   style: getSmallTextStyle(context),
-        //                 ),
-        //                 Row(
-        //                   children: [
-        //                     Container(
-        //                       padding: EdgeInsets.all(10),
-        //                       margin: EdgeInsets.all(5),
-        //                       decoration: BoxDecoration(
-        //                         color: Appcolor.scendary,
-        //                         borderRadius: BorderRadius.circular(10),
-        //                       ),
-        //                       child: SvgPicture.asset(
-        //                           Cartlist[index].addsvgimg ?? ''),
-        //                     ),
-        //                     Text(
-        //                       cart?[index].itemQuantity.toString()??'',
-        //                       style: getSmallTextStyle(context),
-        //                     ),
-        //                     Container(
-        //                       padding: EdgeInsets.all(15),
-        //                       margin: EdgeInsets.all(5),
-        //                       decoration: BoxDecoration(
-        //                         color: Appcolor.scendary,
-        //                         borderRadius: BorderRadius.circular(10),
-        //                       ),
-        //                       child: InkWell(
-        //                         onTap: (){
-        //                           context.read<HomeBloc>().add(RemoveCartEvent(item_id:cart?[index].itemId));
-        //                         },
-        //                         child: SvgPicture.asset(
-        //                             Cartlist[index].removesvgimg ?? ''),
-        //                       ),
-        //                     ),
-        //                   ],
-        //                 )
-        //               ],
-        //             ),
-        //             trailing: Expanded(
-        //               child: SvgPicture.asset(Cartlist[index].svgimg ?? ''),
-        //             ),
-        //           );
-        //           SizedBox(
-        //             height: 10,
-        //           );
-        //         },
-        //         separatorBuilder: (BuildContext context, int index) {
-        //           return Divider(
-        //             thickness: 2,
-        //             indent: 10,
-        //             endIndent: 3,
-        //             color: Colors.grey,
-        //           );
-        //         },
-        //       ),
-        //       Spacer(
-        //         flex: 2,
-        //       ),
-        //       Padding(
-        //         padding: const EdgeInsets.all(15.0),
-        //         child: Column(
-        //           children: [
-        //             Row(
-        //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //               children: [
-        //                 Text(
-        //                   'Total',
-        //                   style: getSmallTextStyle(context, fontSize: 20),
-        //                 ),
-        //                 Text(
-        //                  '\$65',
-        //                   style: getBodyTextStyle(context, fontSize: 20),
-        //                 ),
-        //               ],
-        //             ),
-        //             SizedBox(
-        //               height: 12,
-        //             ),
-        //             custom_buttom(
-        //                 border: Appcolor.primary,
-        //                 text: 'Checkout',
-        //                 backg: Appcolor.primary,
-        //                 textcolor: Appcolor.white,
-        //                 ontap: () {})
-        //           ],
-        //         ),
-        //       ),
-        //       Spacer(
-        //         flex: 3,
-        //       )
-        //     ],
-        //   ),
-        // );
-        // }
+//  return Center(
+//   child: Column(
+//     children: [
+//       ListView.separated(
+//         shrinkWrap: true,
+//         itemCount: cart?.length ??0,
+//         itemBuilder: (BuildContext context, int index) {
+//           Row(
+//             children: [Icon(Icons.clean_hands)],
+//           );
+//           return ListTile(
+//             leading: CachedNetworkImage(
+//               imageUrl: cart?[index].itemProductImage??'',
+//               fit: BoxFit.cover,
+//               width: 100,
+//               height: 160,
+//             ),
+//             title: Text(
+//               cart?[index].itemProductName??'',
+//               maxLines: 1,
+//               style: getSmallTextStyle(context),
+//             ),
+//             subtitle: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Text(
+//                   cart?[index].itemProductPrice??'',
+//                   style: getSmallTextStyle(context),
+//                 ),
+//                 Row(
+//                   children: [
+//                     Container(
+//                       padding: EdgeInsets.all(10),
+//                       margin: EdgeInsets.all(5),
+//                       decoration: BoxDecoration(
+//                         color: Appcolor.scendary,
+//                         borderRadius: BorderRadius.circular(10),
+//                       ),
+//                       child: SvgPicture.asset(
+//                           Cartlist[index].addsvgimg ?? ''),
+//                     ),
+//                     Text(
+//                       cart?[index].itemQuantity.toString()??'',
+//                       style: getSmallTextStyle(context),
+//                     ),
+//                     Container(
+//                       padding: EdgeInsets.all(15),
+//                       margin: EdgeInsets.all(5),
+//                       decoration: BoxDecoration(
+//                         color: Appcolor.scendary,
+//                         borderRadius: BorderRadius.circular(10),
+//                       ),
+//                       child: InkWell(
+//                         onTap: (){
+//                           context.read<HomeBloc>().add(RemoveCartEvent(item_id:cart?[index].itemId));
+//                         },
+//                         child: SvgPicture.asset(
+//                             Cartlist[index].removesvgimg ?? ''),
+//                       ),
+//                     ),
+//                   ],
+//                 )
+//               ],
+//             ),
+//             trailing: Expanded(
+//               child: SvgPicture.asset(Cartlist[index].svgimg ?? ''),
+//             ),
+//           );
+//           SizedBox(
+//             height: 10,
+//           );
+//         },
+//         separatorBuilder: (BuildContext context, int index) {
+//           return Divider(
+//             thickness: 2,
+//             indent: 10,
+//             endIndent: 3,
+//             color: Colors.grey,
+//           );
+//         },
+//       ),
+//       Spacer(
+//         flex: 2,
+//       ),
+//       Padding(
+//         padding: const EdgeInsets.all(15.0),
+//         child: Column(
+//           children: [
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 Text(
+//                   'Total',
+//                   style: getSmallTextStyle(context, fontSize: 20),
+//                 ),
+//                 Text(
+//                  '\$65',
+//                   style: getBodyTextStyle(context, fontSize: 20),
+//                 ),
+//               ],
+//             ),
+//             SizedBox(
+//               height: 12,
+//             ),
+//             custom_buttom(
+//                 border: Appcolor.primary,
+//                 text: 'Checkout',
+//                 backg: Appcolor.primary,
+//                 textcolor: Appcolor.white,
+//                 ontap: () {})
+//           ],
+//         ),
+//       ),
+//       Spacer(
+//         flex: 3,
+//       )
+//     ],
+//   ),
+// );
+// }
 //         else{
 // return Center(child:Text("No item Found",style: getBodyTextStyle(context),),);
 //         }
-           
+
 //         },
 //       ),
 //     );
 //   }
 // }
-
-

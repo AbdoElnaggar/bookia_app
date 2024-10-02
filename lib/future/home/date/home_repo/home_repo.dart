@@ -23,7 +23,8 @@ class HomeRepo {
           headers: {
             "Authorization":
                 "Bearer${ApplocalStorage.getData(key: ApplocalStorage.token)}"
-          }, data: {});
+          },
+          data: {});
       if (response.statusCode == 200) {
         var model = BestSellerResponseModel.fromJson(response.data);
         return model;
@@ -45,7 +46,8 @@ class HomeRepo {
           headers: {
             "Authorization":
                 "Bearer${ApplocalStorage.getData(key: ApplocalStorage.token)}"
-          }, data: {});
+          },
+          data: {});
       if (response.statusCode == 200) {
         var model = HomeBannerResponseModel.fromJson(response.data);
         return model;
@@ -67,7 +69,8 @@ class HomeRepo {
           headers: {
             "Authorization":
                 "Bearer ${ApplocalStorage.getData(key: ApplocalStorage.token)}"
-          }, data: {});
+          },
+          data: {});
       if (response.statusCode == 200) {
         var model = GetWishlistResponseModel.fromJson(response.data);
         return model;
@@ -130,20 +133,18 @@ class HomeRepo {
 
   //cart
 
-  static Future<GetCartResponseModel?> getCart({required item_id}) async {
+  static Future<GetCartResponseModel?> getCart() async {
     try {
       var response = await DioProvider.get(
           endpoint: App_constant.CartEndpoint,
-          data: {
-            "cart_item_id": item_id
-          },
           headers: {
             "Authorization":
                 "Bearer ${ApplocalStorage.getData(key: ApplocalStorage.token)}"
-          });
+          },
+          data: {});
       if (response.statusCode == 200) {
         var model = GetCartResponseModel.fromJson(response.data);
-        //log(response.data.toString());
+        log(response.data.toString());
         return model;
       } else {
         return null;
@@ -154,13 +155,12 @@ class HomeRepo {
     }
   }
 
-  static Future<GetCartResponseModel?> removeCart(
-      {required product_id}) async {
+  static Future<GetCartResponseModel?> removeCart({required product_id}) async {
     try {
       var response = await DioProvider.post(
           endpoint: App_constant.Remove_CartEndpoint,
           data: {
-            "cart_item_id": product_id,
+            "product_id": product_id
           },
           headers: {
             "Authorization":
@@ -178,13 +178,12 @@ class HomeRepo {
     }
   }
 
-  static Future<GetCartResponseModel?> AddToCart(
-      { required product_id}) async {
-     try {
+  static Future<GetCartResponseModel?> AddToCart({required product_id}) async {
+    try {
       var response = await DioProvider.post(
           endpoint: App_constant.Add_to_CartEndpoint,
           data: {
-            "product_id":product_id
+            "product_id": product_id
           },
           headers: {
             "Authorization":

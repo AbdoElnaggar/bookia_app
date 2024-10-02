@@ -3,8 +3,12 @@
 import 'dart:developer';
 
 import 'package:bookia_app/core/constant/assset_iocns.dart';
+import 'package:bookia_app/core/custome_widget/nav_bar.dart';
+import 'package:bookia_app/core/function/navigator.dart';
 import 'package:bookia_app/core/utlis/text_style.dart';
+import 'package:bookia_app/future/home/presentation/pages/home/home_view.dart';
 import 'package:bookia_app/future/profile/presentation/block/bloc/profile_bloc.dart';
+import 'package:bookia_app/future/profile/presentation/pages/updatePassword.dart';
 import 'package:bookia_app/future/profile/presentation/widget/order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,12 +35,15 @@ class _profile_viewState extends State<profile_view> {
       create: (context) => ProfileBloc()..add(GetProfileEvent()),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title:
               Text("Profile", style: getBodyTextStyle(context, fontSize: 24)),
           centerTitle: true,
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  pushrelacement(context, NavBar());
+                },
                 icon: SvgPicture.asset(
                   'assets/icons/Logout.svg',
                   height: 20,
@@ -82,8 +89,16 @@ class _profile_viewState extends State<profile_view> {
                 SizedBox(
                   height: 16,
                 ),
-                profile_order(title: "MY Orders"),
-                profile_order(title: "Edit Profile"),
+                InkWell(
+                    onTap: () {
+                      push(context, Updatepassword());
+                    },
+                    child: profile_order(title: "MY Orders")),
+                InkWell(
+                  onTap: () {
+                    push(context, Updatepassword());
+                  }
+                  ,child: profile_order(title: "Edit Profile")),
                 profile_order(title: "Reset Password"),
                 profile_order(title: "FAQ"),
                 profile_order(title: "Contact Us"),

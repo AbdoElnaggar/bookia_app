@@ -43,11 +43,13 @@ final class Add_to_WishlistErrorState extends HomeState {}
 //cart
 
 final class CartLoadingState extends HomeState {}
+
 final class CartLoadedState extends HomeState {}
 
 final class RemoveCartLoadingState extends HomeState {}
+
 final class RemoveCartLoadedState extends HomeState {}
 
 final class Add_to_CartLoadingState extends HomeState {}
-final class Add_to_CartLoadedState extends HomeState {}
 
+final class Add_to_CartLoadedState extends HomeState {}

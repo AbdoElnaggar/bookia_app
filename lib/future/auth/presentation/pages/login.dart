@@ -14,11 +14,11 @@ import 'package:bookia_app/future/auth/data/models/request/registerPrams.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authBlok.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authEvent.dart';
 import 'package:bookia_app/future/auth/presentation/blok/authState.dart';
+import 'package:bookia_app/future/auth/presentation/pages/forget_password.dart';
 import 'package:bookia_app/future/home/presentation/pages/home/home_view.dart';
 import 'package:bookia_app/future/welcome/welcome.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:bookia_app/future/forget_passwored/forget_password.dart';
 import 'package:bookia_app/future/auth/presentation/pages/register.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -93,7 +93,7 @@ class login_view extends StatelessWidget {
                           return "Enter Your email";
                         }
                         return null;
-                      },
+                      },  
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Appcolor.border,

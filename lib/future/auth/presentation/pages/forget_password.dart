@@ -7,6 +7,7 @@ import 'package:bookia_app/core/custome_widget/button.dart';
 import 'package:bookia_app/core/custome_widget/form_filed.dart';
 import 'package:bookia_app/core/custome_widget/social_medai.dart';
 import 'package:bookia_app/core/utlis/text_style.dart';
+import 'package:bookia_app/future/auth/presentation/pages/login.dart';
 import 'package:bookia_app/future/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -65,6 +66,23 @@ class forget_password extends StatelessWidget {
                   text: 'Send code',
                   backg: Appcolor.primary,
                   textcolor: Colors.white),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Remember Password? ',
+                    style: getBodyTextStyle(context, fontSize: 15),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      pushrelacement(context, login_view());
+                    },
+                    child: Text('  Login',
+                        style: getBodyTextStyle(context,
+                            color: Appcolor.primary, fontSize: 15)),
+                  )
+                ],
+              )
             ],
           ),
         ),

@@ -14,7 +14,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 
 class wishlist_view extends StatefulWidget {
-   wishlist_view({super.key, this.product});
+  wishlist_view({super.key, this.product});
   final Product? product;
   @override
   State<wishlist_view> createState() => _wishlist_viewState();
@@ -50,7 +50,6 @@ class _wishlist_viewState extends State<wishlist_view> {
                     return Lottie.asset('assets/image/loding.json');
                   });
             }
-            
           },
           buildWhen: (previous, current) => current is WishlistLoadedState,
           builder: (context, state) {
@@ -127,13 +126,15 @@ class _wishlist_viewState extends State<wishlist_view> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   InkWell(
-                                    onTap: (){
+                                    onTap: () {
                                       // context.read<HomeBloc>().add(GetCartEvent());
-                                    context.read<HomeBloc>().add(Add_To_CartEvent(product_id:wishlistBooks?[index].id?? ""));
-                                   
+                                      context.read<HomeBloc>().add(
+                                          Add_To_CartEvent(
+                                              product_id:
+                                                  wishlistBooks?[index].id ??
+                                                      ""));
                                     },
                                     child: CustomButton(
-                                      
                                         height: 40,
                                         width: 190,
                                         text: 'Add to Card',

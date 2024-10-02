@@ -1,6 +1,5 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors, prefer_const_constructors_in_immutables
 
-
 import 'package:bookia_app/core/constant/assset_iocns.dart';
 import 'package:bookia_app/core/custome_widget/custtom_bottom.dart';
 import 'package:bookia_app/core/function/dialog.dart';
@@ -17,7 +16,7 @@ import 'package:lottie/lottie.dart';
 class Book_details extends StatelessWidget {
   Book_details({super.key, this.product});
   final Product? product;
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,9 +63,9 @@ class Book_details extends StatelessWidget {
                 child: CustomButton(
               text: 'Add To Cart',
               onTap: () {
-              context
-                    .read<HomeBloc>()
-                    .add(Add_To_CartEvent(product_id: product?.id ?? "",));
+                context.read<HomeBloc>().add(Add_To_CartEvent(
+                      product_id: product?.id ?? "",
+                    ));
               },
               color: Appcolor.text_color,
             ))
@@ -78,14 +77,11 @@ class Book_details extends StatelessWidget {
           if (state is Add_to_WishlistLoadedState) {
             Navigator.pop(context);
             showsuccessDialog(context, "Added to Wishlist Sucsses");
-          } 
-          
-         else if (state is Add_to_CartLoadedState) {
-            Navigator.pop(context);     
+          } else if (state is Add_to_CartLoadedState) {
+            Navigator.pop(context);
             showsuccessDialog(context, "Added to Cart Sucsses");
-          }
-
-          else if (state is Add_to_WishlistLoadingState|| state is Add_to_CartLoadingState) {
+          } else if (state is Add_to_WishlistLoadingState ||
+              state is Add_to_CartLoadingState) {
             showDialog(
                 context: context,
                 barrierDismissible: false,
@@ -150,5 +146,4 @@ class Book_details extends StatelessWidget {
       ),
     );
   }
-
 }

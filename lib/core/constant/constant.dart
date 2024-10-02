@@ -20,4 +20,7 @@ class App_constant {
   static const String CartEndpoint = '/cart';
   static const String Add_to_CartEndpoint = '/add-to-cart';
   static const String Remove_CartEndpoint = '/remove-from-cart';
+
+  //
+  static const String UpdatepasswordEndpoint = '/update-password';
 }
